@@ -1,0 +1,109 @@
+<div class="practice-container">
+    <h2>Parent componet</h2>
+    <p ngNonBindable>ngNonBindable does not evaluate expressions {{1+1}}</p>
+    <!-- Property binding -->
+    <app-child [formData]="firstFormGroup.value" [(size)]="fontSize" (toParentViaOutput)="fromChildOut($event)">
+        <p>This is using ng-content. The line is passed to child from parent using ng-content. To display elements from
+            parent to child, we use ngcontent with tags</p>
+    </app-child>
+
+    <div class="section">
+        <h3>Data binding</h3>
+        <p>From child :viewchild - {{fromChild}}</p>
+        <p>From child :output - {{fromChildo}}</p>
+        <div class="margin-1em" [style.font-size.px]="fontSize">
+            Testing two-way binding. This line font size is controlled in child component.
+        </div>
+        <!-- Date pipe -->
+        <p class="margin-1em" [ngClass]="colorChange? 'color-change':''" (click)="changeColor()">
+            The hero's birthday is {{ birthday | date:"MMM dd, yyyy" }}
+        </p>
+        <!-- Ngmodel for input -->
+        <input class="margin-lr-1em" [(ngModel)]="inputValue" />
+        <span>{{inputValue | uppercase}}</span>
+        <button (click)="toChild()" class="btn">Pass to child</button>
+        <div>pass data to child through service using rxjs. We create a subject in the service. Pass data to subject on
+            button click. Service will broadcast the new value using next(). In the child oninit we subscribe to the
+            subject
+            in the service. On broadcast the value will be available in the child.</div>
+    </div>
+
+    <div class="section">
+        <h3>Form</h3>
+        <form class="margin-1em" [formGroup]="firstFormGroup" (ngSubmit)="onFormSubmit()">
+            <label for="name">Name</label>
+            <input id="name" type="text" formControlName="name" />
+            <br />
+            <label for="age">Age</label>
+            <input id="age" type="number" formControlName="age" />
+            <br />
+            <label for="email">Email</label>
+            <input id="email" type="email" formControlName="email" />
+            <br />
+            <label for="address">Address</label>
+            <textarea cols="30" rows="10" id="address" type="number" formControlName="address"></textarea>
+            <br />
+            <button class="btn" type="submit" [disabled]="firstFormGroup.invalid"
+                [ngClass]="(firstFormGroup.invalid && !firstFormGroup.untouched) ? 'invalid' : ''">Submit</button>
+        </form>
+    </div>
+
+    <div class="section">
+        <h3>Directives: *ngIf, *ngFor</h3>
+        <!-- Attribute binding and event binding -->
+        <button [attr.aria-label]="actionName" class="margin-1em btn" (click)="toggleList()">Show House List</button>
+        <ul *ngIf="showHousingList; else nodata" class="margin-1em">
+            <li *ngFor="let house of housingList">
+                {{house.name + ", " + house.city}}
+            </li>
+        </ul>
+        <ng-template #nodata>
+            <p>No list</p>
+        </ng-template>
+        <div class="margin-1em">
+            <select [(ngModel)]="selectedHouse">
+                <ng-container *ngFor="let house of housingList">
+                    <option [ngValue]="house">{{house.name}}</option>
+                </ng-container>
+            </select>
+        </div>
+        <p>Selected House: {{selectedHouse.name + ", " + selectedHouse.city}}</p>
+    </div>
+
+    <div class="section">
+        <h3>Custom Directive</h3>
+        <div class="margin-1em">
+            <input class="margin-lr-1em" type="radio" name="colors" (click)="highLightColor='lightgreen'" /> Green
+            <input class="margin-lr-1em" type="radio" name="colors" (click)="highLightColor='yellow'" /> Yellow
+            <input class="margin-lr-1em" type="radio" name="colors" (click)="highLightColor='lightblue'" /> Blue
+        </div>
+        <p class="margin-1em" [appHighlight]="highLightColor">Custom highlighting directive</p>
+    </div>
+
+    <div class="section">
+        <h3>Observable</h3>
+        <div class="margin-1em">
+            <button (click)="getData()" class="btn">Get Stream</button>
+            <ul class="margin-1em">
+                <li style="border: 1px solid black;padding: 5px;margin: 2px;" *ngFor="let item of listForObservable">
+                    {{item}}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Custom Pipe</h3>
+        <p>Appends "Appended value:" to the text </p>
+        <p>{{"Some test" | append}}</p>
+    </div>
+
+    <div class="section">
+        <h3>Signal</h3>
+        <button class="btn" (click)="increaseCount()">Increase</button>
+        <button class="btn" (click)="resetCount()">Reset</button>
+        <p>Count: {{count()}}</p>
+        <p>Double: {{double()}}</p>
+    </div>
+
+</div>

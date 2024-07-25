@@ -1,1 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+:root {
+  --primary-color: #605DC8;
+  --secondary-color: #8B89E6;
+  --accent-color: #e8e7fa;
+  --shadow-color: #E8E8E8;
+}
+
+button.primary {
+  padding: 10px;
+  border: solid 1px var(--primary-color);
+  background: var(--primary-color);
+  color: white;
+  border-radius: 8px;
+}
+
+.btn {
+  font-size: 1em;
+  font-weight: 100;
+  padding: 0.4em;
+  color: #605DC8;
+  border: 1px solid #605DC8;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0.5em;
+
+  &.invalid {
+    cursor: not-allowed;
+    color: #c85d5d;
+    border: 1px solid #c85d5d;
+  }
+}
+
+p {
+  margin: 0.5em 0;
+}
+
+.section {
+  border: 1px solid #605DC8;
+  margin: 0.5em;
+  padding: 0.5em;
+
+  h3 {
+    font-size: 2em;
+    color: #8B89E6;
+  }
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

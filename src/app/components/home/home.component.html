@@ -1,0 +1,10 @@
+<section>
+    <form #filterCity>
+        <input #filter type="text" placeholder="Filter by city" (keydown.enter)="filterResults($event, filter.value);">
+        <button class="primary" type="button" (click)="filterResults($event, filter.value)">Search</button>
+    </form>
+</section>
+<section class="results">
+    <app-housing-location *ngFor="let housingLocation of filteredlocationList"
+    [housingLocation]="housingLocation"></app-housing-location>
+</section>

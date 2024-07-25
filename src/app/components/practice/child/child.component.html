@@ -1,0 +1,15 @@
+<div class="section">
+    <h3>Child Component</h3>
+    <p>Name: {{formData.name | uppercase}} <br>Age: {{formData.age}}</p>
+    <ng-content></ng-content>
+    <button class="btn" (click)="increaseSize()">Increase</button>
+    <button class="margin-lr-1em btn" (click)="decreaseSize()">Decrease</button>
+    <span class="margin-lr-1em" [style.font-size.px]="size">FontSize: {{size}}px</span>
+    <p>From parent: {{fromParent}}</p>
+    <input class="margin-lr-1em" [(ngModel)]="toParento" (keyup.enter)="onKeyUp($event)" />
+    <span>{{toParento}}</span>
+    <button (click)="toParentOut()" class="btn">Pass to parent</button>
+
+    <p>{{count | number:"2.0-4"}}</p>
+</div>
+ 
