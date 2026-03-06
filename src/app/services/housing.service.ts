@@ -20,21 +20,21 @@ export class HousingService {
     setTimeout(() => { observer.complete() }, 6000);
   })
 
-  async getAllHousingLocationList() : Promise<HousingLocation[]> {
+  async getAllHousingLocationList(): Promise<HousingLocation[]> {
     const data = await fetch(this.url);
     const formattedData = await data.json() ?? [];
     this.loggerService.log(formattedData);
     return formattedData ?? [];
-   }
-  
-  async getHousingLocationById(id:Number) : Promise<HousingLocation | undefined> {
+  }
+
+  async getHousingLocationById(id: Number): Promise<HousingLocation | undefined> {
     const data = await fetch(`${this.url}/${id}`);
     const formattedData = await data.json() ?? [];
     this.loggerService.log(formattedData);
     return formattedData ?? {};
   }
 
-  submitApplication(firstName: string, lastName: string, email:string, phone:string) {
+  submitApplication(firstName: string, lastName: string, email: string, phone: string) {
     console.log(firstName, lastName, email, phone);
   }
 }

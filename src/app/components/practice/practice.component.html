@@ -41,7 +41,7 @@
             <input id="email" type="email" formControlName="email" />
             <br />
             <label for="address">Address</label>
-            <textarea cols="30" rows="10" id="address" type="number" formControlName="address"></textarea>
+            <textarea cols="30" rows="10" id="address" type="text" formControlName="address"></textarea>
             <br />
             <button class="btn" type="submit" [disabled]="firstFormGroup.invalid"
                 [ngClass]="(firstFormGroup.invalid && !firstFormGroup.untouched) ? 'invalid' : ''">Submit</button>

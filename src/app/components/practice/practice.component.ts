@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, computed, effect, Input, OnDestroy, OnInit, signal, Signal, ViewChild, viewChild } from '@angular/core';
+import { AfterViewInit, Component, computed, effect, OnDestroy, OnInit, signal, Signal, ViewChild } from '@angular/core';
 import { PracticeService } from '../../services/practice.service';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';

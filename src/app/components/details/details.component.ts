@@ -27,7 +27,8 @@ export class DetailsComponent {
     private route: ActivatedRoute) {
     const housingLocationId = Number(this.route.snapshot.params['id']);
     console.log(this.route.snapshot.queryParams);
-    this.housingService.getHousingLocationById(housingLocationId).then((location) => {
+    this.housingService.getHousingLocationById(housingLocationId).subscribe((location) => {
+      console.log(location);
       this.housingLocation = location;
     });
   }

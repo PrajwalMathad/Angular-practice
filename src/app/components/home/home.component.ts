@@ -3,6 +3,7 @@ import { HousingLocationComponent } from '../housing-location/housing-location.c
 import { HousingLocation } from '../housing-location/housing-location';
 import { CommonModule } from '@angular/common';
 import { HousingService } from '../../services/housing.service';
+import { error } from 'console';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -21,6 +22,18 @@ export class HomeComponent implements OnInit, OnChanges {
     }).catch(err => {
       console.log(err);
     });
+
+  //   this.housingService.getAllHousingObservable().subscribe({
+  //     next: (housingList: HousingLocation[]) => {
+  //       console.log(this.housingLocationList);
+  //       this.housingLocationList = housingList;
+  //       this.filteredlocationList = housingList;
+  //       console.log(this.housingLocationList);
+  //     },
+  //     error: (err: Error) => {
+  //       console.log(err);
+  //     }
+  //   })
   }
   ngOnInit(): void {
     console.log("on init");
